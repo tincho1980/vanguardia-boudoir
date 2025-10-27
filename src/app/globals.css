@@ -2,11 +2,140 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --font-javanese: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
-  --font-humanist: ui-sans-serif, system-ui, sans-serif;
-}
-
-body {
-  font-family: var(--font-humanist);
-}
+/* ==========================
+   🎨 VANGUARDIA DESIGN SYSTEM
+   ========================== */
+   :root {
+    /* 🎨 Color Palette */
+    --deep-black: #0d0d0d;
+    --warm-cream: #f7f1e7;
+    --muted-gold: #b89a67;
+    --sepia-shadow: #2c2a28;
+    --warm-beige: #e6cbb2;
+    --soft-copper: #c5a572;
+    --elegant-gray: #8b8b8b;
+  
+    /* Base Theme */
+    --background: var(--deep-black);
+    --foreground: var(--warm-cream);
+    --accent: var(--muted-gold);
+    --secondary: var(--warm-beige);
+    --shadow: var(--sepia-shadow);
+  
+    /* Typography */
+    --font-javanese: var(--font-playfair);
+    --font-humanist: var(--font-inter);
+  
+    /* Font scale */
+    --text-xs: 0.75rem;
+    --text-sm: 0.875rem;
+    --text-base: 1rem;
+    --text-lg: 1.125rem;
+    --text-xl: 1.25rem;
+    --text-2xl: 1.5rem;
+    --text-3xl: 1.875rem;
+    --text-4xl: 2.25rem;
+    --text-5xl: 3rem;
+    --text-6xl: 3.75rem;
+    --text-7xl: 4.5rem;
+    --text-8xl: 6rem;
+    --text-9xl: 8rem;
+  }
+  
+  /* ========== RESET ========== */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    background: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-humanist);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+  
+  /* ========== SCROLLBAR ========== */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--shadow);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--accent);
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--warm-cream);
+  }
+  
+  /* ========== TYPOGRAPHY ========== */
+  .font-javanese {
+    font-family: var(--font-javanese);
+  }
+  .font-humanist {
+    font-family: var(--font-humanist);
+  }
+  
+  /* ========== ANIMATIONS ========== */
+  .animate-fade-up {
+    animation: fadeUp 0.8s ease-out forwards;
+  }
+  .animate-fade-in {
+    animation: fadeIn 1s ease-out forwards;
+  }
+  .animate-slide-up {
+    animation: slideUp 0.6s ease-out forwards;
+  }
+  
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(50px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  /* ========== CINEMATIC EFFECTS ========== */
+  .cinematic-grain {
+    position: relative;
+  }
+  .cinematic-grain::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.1'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1;
+  }
+  
+  /* ========== CUSTOM CURSOR ========== */
+  .cursor-glow {
+    cursor: none;
+  }
+  .cursor-glow::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    background: radial-gradient(circle, rgba(184,154,103,0.3) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: all 0.1s ease;
+  }
